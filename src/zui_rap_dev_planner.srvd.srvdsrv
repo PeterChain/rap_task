@@ -1,0 +1,6 @@
+@EndUserText.label: 'Development planner'
+define service Zui_rap_dev_planner {
+  expose zcrap_dev as Developer;
+  expose zcrap_task as Task;
+  expose zcrap_proj as Project;
+}

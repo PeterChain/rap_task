@@ -1,29 +1,28 @@
 @Metadata.layer: #CORE
 @UI.headerInfo: {
-  typeName: 'Developer',
-  typeNamePlural: 'Developers',
-  title: {
-    type: #STANDARD,
-    label: 'Developer',
-    value: 'Name'
-  },
-  description.value: 'Devlevel'}
-annotate view zcrap_dev with
+  typeName: 'Project',
+  typeNamePlural: 'Projects'
+}
+annotate view zcrap_proj with
 {
-  @UI: {hidden: true}
-  DevId;
-
   @UI: {
     lineItem: [{position: 10}],
     identification: [{position: 10}],
     selectionField: [{position: 10}]
   }
-  Name;
+  ProjectCode;
 
   @UI: {
     lineItem: [{position: 20}],
     identification: [{position: 20}],
     selectionField: [{position: 20}]
   }
-  Devlevel;
+  Detail;
+
+  @UI: {
+    lineItem: [{position: 30}],
+    identification: [{position: 30}],
+    selectionField: [{position:30}]
+  }
+  TotalArtifacts;
 }

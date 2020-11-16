@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+  typeName: 'Task',
+  typeNamePlural: 'Tasks'
+}
+annotate view zcrap_task with
+{
+  @UI.facet: [{ id: 'planning',
+                purpose: #STANDARD,
+                label: 'Planning',
+                position: 10 },
+              { id: 'detail',
+                purpose: #STANDARD,
+                label: 'Detail',
+                position: 20 }]
+
+  @UI: { identification: [{ position: 10, label: 'Task ID' }] }
+  TaskId;
+
+  @UI: { lineItem: [{ position: 10 }],
+         identification: [{position: 10 }],
+         selectionField: [{ position: 10 }],
+         facet: [{id: 'detail'}] }
+  Detail;
+
+  @UI: { lineItem: [{ position: 20, label: 'Developer' }],
+         identification: [{position: 20 }],
+         selectionField: [{ position: 30 }],
+         facet: [{id: 'planning'}] }
+  DevName;
+
+  @UI: { lineItem: [{ position: 30 }],
+         identification: [{position: 30 }],
+         selectionField: [{ position: 30 }],
+         facet: [{id: 'planning'}] }
+  StartDate;
+
+  @UI: { lineItem: [{ position: 40 }],
+         identification: [{position: 40 }],
+         selectionField: [{ position: 40 }],
+         facet: [{id: 'planning'}] }
+  EndDate;
+
+  @UI: { facet: [{id: 'detail'}] }
+  Complexity;
+
+  @UI: { facet: [{id: 'detail'}] }
+  Artifacts;
+
+  @UI: { facet: [{id: 'planning'}] }
+  DevStatus;
+
+  @UI: { facet: [{id: 'detail'}] }
+  ProjectCode;
+}

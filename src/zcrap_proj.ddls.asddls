@@ -1,6 +1,7 @@
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Consumption View: Project'
 @Search.searchable: true
+@Metadata.allowExtensions: true
 define root view entity zcrap_proj
   as projection on zirap_proj
 {
