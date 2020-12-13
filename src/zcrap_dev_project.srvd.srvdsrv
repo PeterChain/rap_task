@@ -1,0 +1,6 @@
+@EndUserText.label: 'Development Project'
+define service zcrap_dev_project {
+  expose zcrap_proj as Project;
+  expose zcrap_task as Task;
+  expose zcrap_dev as Developer;
+}

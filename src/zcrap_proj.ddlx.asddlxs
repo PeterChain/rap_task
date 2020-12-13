@@ -1,10 +1,27 @@
 @Metadata.layer: #CORE
 @UI.headerInfo: {
   typeName: 'Project',
-  typeNamePlural: 'Projects'
+  typeNamePlural: 'Projects',
+  title: {
+    type: #STANDARD,
+    value: 'ProjectCode',
+    label: 'Project Code'
+  }
 }
 annotate view zcrap_proj with
 {
+  @UI.facet: [{ id: 'Detail',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Project details',
+                position: 10 },
+              { id: 'Task',
+                targetElement: '_Tasks',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                label: 'Tasks',
+                position: 20 }]
+
   @UI: {
     lineItem: [{position: 10}],
     identification: [{position: 10}],
@@ -21,8 +38,8 @@ annotate view zcrap_proj with
 
   @UI: {
     lineItem: [{position: 30}],
-    identification: [{position: 30}],
-    selectionField: [{position:30}]
+    identification: [{position: 30}]
   }
   TotalArtifacts;
+
 }

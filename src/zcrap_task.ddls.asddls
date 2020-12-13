@@ -22,13 +22,6 @@ define view entity zcrap_task
       AssignedDev,
       _Developers.Name     as DevName,
       ProjectId,
-      @Consumption.valueHelpDefinition: [{
-        entity: {
-          name: 'zirap_proj',
-          element: 'ProjId'
-        }
-      }]
-      @ObjectModel.text.element: ['ProjectCode']
       _Project.ProjectCode as ProjectCode,
 
       /* Associations */

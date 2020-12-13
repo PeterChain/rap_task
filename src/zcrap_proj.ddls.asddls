@@ -1,7 +1,12 @@
-@AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Consumption View: Project'
-@Search.searchable: true
 @Metadata.allowExtensions: true
+@Search.searchable: true
+@UI: {
+  headerInfo: { typeName: 'Project',
+                typeNamePlural: 'Projects',
+                title: { type: #STANDARD, label: 'Project', value: 'ProjId' } },
+  presentationVariant: [{ sortOrder: [{ by: 'ProjectCode', direction:  #ASC }], visualizations: [{type: #AS_LINEITEM}] }]
+}
 define root view entity zcrap_proj
   as projection on zirap_proj
 {

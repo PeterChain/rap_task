@@ -1,55 +1,57 @@
 @Metadata.layer: #CORE
 @UI.headerInfo: {
   typeName: 'Task',
-  typeNamePlural: 'Tasks'
+  typeNamePlural: 'Tasks',
+  description: {
+    label: 'Task',
+    value: 'TaskId'}
 }
 annotate view zcrap_task with
 {
-  @UI.facet: [{ id: 'planning',
-                purpose: #STANDARD,
-                label: 'Planning',
-                position: 10 },
-              { id: 'detail',
-                purpose: #STANDARD,
-                label: 'Detail',
-                position: 20 }]
+  @UI.facet: [{id: 'TaskHeader',
+               purpose: #HEADER,
+               type: #IDENTIFICATION_REFERENCE,
+               targetQualifier: 'TaskHeader',
+               position: 10 },
+              {id: 'TaskDetail',
+               purpose: #STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Details',
+               targetQualifier: 'TaskDetail',
+               position: 20 }]
 
-  @UI: { identification: [{ position: 10, label: 'Task ID' }] }
+  @UI: { identification: [{position: 10, label:'Task', qualifier: 'TaskHeader' }]}
   TaskId;
 
   @UI: { lineItem: [{ position: 10 }],
-         identification: [{position: 10 }],
-         selectionField: [{ position: 10 }],
-         facet: [{id: 'detail'}] }
+         identification: [{position: 10, qualifier: 'TaskDetail' }],
+         selectionField: [{ position: 10 }]}
   Detail;
 
   @UI: { lineItem: [{ position: 20, label: 'Developer' }],
-         identification: [{position: 20 }],
-         selectionField: [{ position: 30 }],
-         facet: [{id: 'planning'}] }
+         identification: [{position: 20, label:'Developer', qualifier: 'TaskHeader' }],
+         selectionField: [{ position: 30 }]}
   DevName;
 
   @UI: { lineItem: [{ position: 30 }],
          identification: [{position: 30 }],
-         selectionField: [{ position: 30 }],
-         facet: [{id: 'planning'}] }
+         selectionField: [{ position: 30 }]}
   StartDate;
 
   @UI: { lineItem: [{ position: 40 }],
-         identification: [{position: 40 }],
-         selectionField: [{ position: 40 }],
-         facet: [{id: 'planning'}] }
+         identification: [{position: 40, qualifier: 'TaskDetail' }],
+         selectionField: [{ position: 40 }]}
   EndDate;
 
-  @UI: { facet: [{id: 'detail'}] }
+  @UI: { identification: [{position: 50, qualifier: 'TaskDetail' }] }
   Complexity;
 
-  @UI: { facet: [{id: 'detail'}] }
+  @UI: { identification: [{position: 60, qualifier: 'TaskDetail' }] }
   Artifacts;
 
-  @UI: { facet: [{id: 'planning'}] }
+  @UI: { identification: [{position: 70, qualifier: 'TaskDetail' }] }
   DevStatus;
 
-  @UI: { facet: [{id: 'detail'}] }
+  @UI.hidden: true
   ProjectCode;
 }

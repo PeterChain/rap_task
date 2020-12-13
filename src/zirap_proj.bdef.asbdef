@@ -1,0 +1,50 @@
+managed; // implementation in class zbp_irap_proj unique;
+
+define behavior for zirap_proj alias Project
+persistent table ZRAP_TSK_PROJ
+lock master
+//authorization master ( instance )
+//etag master
+{
+  create;
+  update;
+  delete;
+  association _Tasks { create; }
+
+  field ( numbering : managed, readonly ) ProjId;
+
+  mapping for zrap_tsk_proj
+  {
+    ProjectCode     = project_code;
+    ProjId          = proj_id;
+    TotalArtifacts  = total_artifacts;
+    Detail          = detail;
+  }
+}
+
+define behavior for zirap_task alias Task
+persistent table ZTRAP_TASK
+lock dependent by _Project
+//authorization dependent by <association>
+//etag master <field_name>
+{
+  update;
+  delete;
+  association _Project;
+
+  field ( numbering : managed, readonly ) TaskId;
+  field ( readonly ) ProjectId;
+
+  mapping for ztrap_task
+  {
+    Artifacts     = artifacts;
+    AssignedDev   = assigned_dev;
+    Complexity    = complexity;
+    Detail        = detail;
+    DevStatus     = dev_status;
+    EndDate       = end_date;
+    StartDate     = start_date;
+    ProjectId     = project_id;
+    TaskId        = task_id;
+  }
+}
